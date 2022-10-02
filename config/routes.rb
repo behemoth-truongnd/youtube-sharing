@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root "homes#index"
-  resources :youtube_videos, only: [:new, :create]
+  resources :youtube_videos, only: [:new, :create] do
+    member do
+      post :react
+    end
+  end
 end

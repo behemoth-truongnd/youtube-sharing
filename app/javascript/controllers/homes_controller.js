@@ -44,6 +44,54 @@ export default class extends Controller {
     $("#preview-wrapper").append(element);
   }
 
+  likeVideo() {
+    event.preventDefault();
+    var videoId = $(event.target).data("id");
+    var $target = $(event.target);
+    $.ajax({
+      url: `/youtube_videos/${videoId}/react?react_type=like`,
+      type: "POST",
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader(
+          "X-CSRF-Token",
+          $('meta[name="csrf-token"]').attr("content")
+        );
+      },
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        $(`#dislike-${videoId}`).removeClass("active");
+        $(`#dislike-${videoId}`).text(response.dislike_count);
+        $target.toggleClass("active");
+        $target.text(response.like_count);
+      },
+    });
+  }
+
+  dislikeVideo() {
+    event.preventDefault();
+    var videoId = $(event.target).data("id");
+    var $target = $(event.target);
+    $.ajax({
+      url: `/youtube_videos/${videoId}/react?react_type=dislike`,
+      type: "POST",
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader(
+          "X-CSRF-Token",
+          $('meta[name="csrf-token"]').attr("content")
+        );
+      },
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        $(`#like-${videoId}`).removeClass("active");
+        $target.toggleClass("active");
+        $(`#like-${videoId}`).text(response.like_count);
+        $target.text(response.dislike_count);
+      },
+    });
+  }
+
   hideMoviePreview() {
     $("#video-preview").remove();
   }

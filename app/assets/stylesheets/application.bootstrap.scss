@@ -130,26 +130,26 @@ body {
           display: block;
           width: 24px;
           height: 24px;
-          background: url("like.svg") no-repeat;
+          background: url("like_outline.svg") no-repeat;
           background-size: 20px;
           background-position: top center;
           margin-right: 5px;
         }
 
-        // &.like:not(.readonly):hover::before,
-        // &.like:not(.readonly).active::before {
-        //   background-image: url("like.svg");
-        // }
+        &.like:not(.readonly):hover::before,
+        &.like:not(.readonly).active::before {
+          background-image: url("like.svg");
+        }
 
         &.dislike::before {
-          background-image: url("dislike.svg");
+          background-image: url("dislike_outline.svg");
           background-position: bottom center;
         }
 
-        // &.dislike:not(.readonly):hover::before,
-        // &.dislike:not(.readonly).active::before {
-        //   background-image: url("dislike.svg");
-        // }
+        &.dislike:not(.readonly):hover::before,
+        &.dislike:not(.readonly).active::before {
+          background-image: url("dislike.svg");
+        }
       }
     }
 

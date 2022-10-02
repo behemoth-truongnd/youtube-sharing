@@ -19,8 +19,6 @@ class YoutubeVideoForm < BaseForm
       thumbnail_url: video.thumbnail_url,
       duration: video.duration,
       published_at: video.published_at,
-      like_count: video.like_count.to_i,
-      dislike_count: video.dislike_count.to_i,
     )
     model.save
   end

@@ -14,8 +14,8 @@
     </div>
     <div class="movie-subtitle">
       <div class="movie-likes">
-        <span class="icon like"><%= number_with_delimiter(video.like_count) %></span>
-        <span class="icon dislike"><%= number_with_delimiter(video.dislike_count) %></span>
+        <span class="icon like<%= ' readonly' if current_user.blank? %><%= ' active' if reacts.detect { |react| react.youtube_video_id == video.id && react.like? } %>" data-action="click->homes#likeVideo" data-id="<%= video.id %>" id="like-<%= video.id %>"><%= number_with_delimiter(video.like_count) %></span>
+        <span class="icon dislike<%= ' readonly' if current_user.blank? %><%= ' active' if reacts.detect { |react| react.youtube_video_id == video.id && react.dislike? } %>" data-action="click->homes#dislikeVideo" data-id="<%= video.id %>" id="dislike-<%= video.id %>"><%= number_with_delimiter(video.dislike_count) %></span>
       </div>
     </div>
     <div class="movie-description">
