@@ -25,4 +25,26 @@ export default class extends Controller {
       },
     });
   }
+
+  previewVideo() {
+    var youtubeId = $(event.target).data("youtube-id");
+    var element = `<div class="movie-preview" id="video-preview">
+      <iframe
+        width="800"
+        height="500"
+        src="https://www.youtube.com/embed/${youtubeId}"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+
+      <div class="movie-background" data-action="click->homes#hideMoviePreview"></div>
+    </div>`;
+
+    $("#preview-wrapper").append(element);
+  }
+
+  hideMoviePreview() {
+    $("#video-preview").remove();
+  }
 }

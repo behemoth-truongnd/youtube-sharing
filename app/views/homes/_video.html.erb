@@ -1,5 +1,5 @@
 <li class="movie-item">
-  <div class="movie-thumbnail">
+  <div class="movie-thumbnail" data-action="click->homes#previewVideo" data-youtube-id="<%= video.youtube_id %>">
     <%= image_tag video.thumbnail_url, loading: "lazy", alt: "…", width: "200", height: "200" %>
   </div>
   <div class="movie-detail">
