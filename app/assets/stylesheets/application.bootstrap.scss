@@ -218,83 +218,10 @@ body {
 
 .modal {
   position: fixed;
-  top: 0;
+  top: 70px;
   left: 0;
   right: 0;
   bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-
-  .modal-content {
-    background: white;
-    width: 600px;
-    position: relative;
-    z-index: 1;
-    animation: modalAppear 0.2s ease-in backwards;
-    max-height: 80vh;
-    overflow: hidden;
-    display: flex;
-    flex-flow: column;
-
-    .modal-close {
-      position: absolute;
-      right: 0;
-      top: 0;
-      text-align: center;
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
-      font-family: fantasy;
-      font-size: 20px;
-      cursor: pointer;
-    }
-  }
-
-  .modal-shadow {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba($color: #000000, $alpha: 0.75);
-  }
-
-  .modal-header {
-    width: 100%;
-    display: flex;
-
-    .modal-header-tab {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 70px;
-      text-transform: uppercase;
-      cursor: pointer;
-
-      &.active {
-        font-weight: bold;
-        color: #49c5b6;
-      }
-    }
-  }
-
-  .modal-body {
-    flex: 1 1 0%;
-    overflow: auto;
-  }
-
-  @keyframes modalAppear {
-    from {
-      transform: translateY(-30px);
-    }
-
-    to {
-      transform: translateY(0px);
-    }
-  }
 }
 
 .error-message {
