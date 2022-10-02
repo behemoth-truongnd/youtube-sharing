@@ -14,8 +14,8 @@
     </div>
     <div class="movie-subtitle">
       <div class="movie-likes">
-        <span class="icon like"><%= video.like_count %></span>
-        <span class="icon dislike"><%= video.dislike_count %></span>
+        <span class="icon like"><%= number_with_delimiter(video.like_count) %></span>
+        <span class="icon dislike"><%= number_with_delimiter(video.dislike_count) %></span>
       </div>
     </div>
     <div class="movie-description">
