@@ -1,0 +1,10 @@
+<% flash.each do |key, value| %>
+  <% next if key == "timedout" %>
+  <% if key.in?(%w[danger alert]) %>
+    <%= tag.div value, class: "alert alert-danger" %>
+  <% elsif key == "warning" %>
+    <%= tag.div value, class: "alert alert-warning" %>
+  <% else %>
+    <%= tag.div value, class: "alert alert-success" %>
+  <% end %>
+<% end %>

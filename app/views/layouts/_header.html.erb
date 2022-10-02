@@ -1,0 +1,35 @@
+<div class="app-header">
+  <div class="box-left">
+    <ul class="menu">
+      <li>
+        <span><%= link_to "Funny Movies", root_path  %></span>
+      </li>
+    </ul>
+  </div>
+  <div class="box-right">
+    <% if current_user.present? %>
+      <ul class="menu">
+        <li>
+          <span><small>Welcome <%= current_user.email %></small></span>
+        </li>
+        <li>
+          <a href="#">Logout</a>
+        </li>
+        <li class="upload">
+          <a href="#">Share a movie</a>
+        </li>
+      </ul>
+    <% else %>
+      <ul class="menu" >
+        <li class="upload">
+          <%= link_to 'Login / Register', new_user_session_path %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</div>
+
+<% if current_user.present? %>
+<%= render "homes/share_youtube_modal" %>
+<% end %>
+
