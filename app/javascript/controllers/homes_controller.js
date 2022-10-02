@@ -24,6 +24,7 @@ export default class extends Controller {
       success: function (response) {
         if (response.success) {
           $("#youtubeShareModal").modal("hide");
+          window.location.href = "/";
         } else {
           $("#youtube-url").addClass("input-error");
           response.messages.youtube_url.forEach((message) => {
