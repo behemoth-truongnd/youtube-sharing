@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
   def index
-    @videos = YoutubeVideo.all
+    @pagy, @records = pagy(YoutubeVideo.all)
   end
 end
