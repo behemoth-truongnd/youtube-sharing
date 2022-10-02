@@ -5,9 +5,9 @@ class YoutubeVideosController < ApplicationController
   def create
     @form = ::YoutubeVideoForm.new.assign_model(current_user.youtube_videos.build, youtube_video_params)
     if @form.save
-      render json: { sucess: true, message: "Share video success" }
+      render json: { success: true, message: "Share video success" }
     else
-      render json: { sucess: false, messages: @form.errors.to_hash(true) }
+      render json: { success: false, messages: @form.errors.to_hash(true) }
     end
   end
 

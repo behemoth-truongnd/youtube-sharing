@@ -16,6 +16,11 @@ body {
   box-sizing: border-box;
 }
 
+.input-error {
+  border-color: red !important;
+  border-width: 1px;
+}
+
 .btn-login {
   font-size: 0.9rem;
   letter-spacing: 0.05rem;
