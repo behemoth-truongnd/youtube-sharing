@@ -36,3 +36,4 @@
 /node_modules
 /config/credentials/*.key
 /config/credentials/development.yml.enc
+/config/credentials/test.yml.enc

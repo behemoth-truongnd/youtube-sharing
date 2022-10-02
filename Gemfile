@@ -52,6 +52,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 group :test do
+  gem "faker"
   gem "database_cleaner-active_record"
   gem "factory_bot_rails"
   gem "rspec-rails"
