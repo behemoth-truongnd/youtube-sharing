@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :youtube_videos, dependent: :destroy
   has_many :react_histories, dependent: :destroy
 
+  # rubocop:disable Rails/SkipsModelValidations
   def react(video_id, react_type)
     return if (ReactHistory.react_types.keys - ["none_react"]).exclude?(react_type)
 
@@ -20,7 +21,9 @@ class User < ApplicationRecord
                   YoutubeVideo.where(id: video_id).update_all("#{react_type}_count = #{react_type}_count - 1")
                 else
                   react.public_send("#{react_type}!")
-                  YoutubeVideo.where(id: video_id).update_all("#{react_type}_count = #{react_type}_count + 1, #{old_react_type}_count = #{old_react_type}_count - 1")
+                  YoutubeVideo.where(id: video_id).update_all(
+                    "#{react_type}_count = #{react_type}_count + 1, #{old_react_type}_count = #{old_react_type}_count - 1",
+                  )
                 end
 
       raise "Cann't react video. Please try again!" if updated != 1
@@ -28,4 +31,5 @@ class User < ApplicationRecord
 
     react
   end
+  # rubocop:enable Rails/SkipsModelValidations
 end
