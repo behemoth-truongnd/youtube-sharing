@@ -13,7 +13,7 @@
           <span><small>Welcome <%= current_user.email %></small></span>
         </li>
         <li>
-          <a href="#">Logout</a>
+          <%= link_to "Logout", destroy_user_session_path, data: { action: "common#linkDestroy" } %>
         </li>
         <li class="upload">
           <a href="#" data-toggle="modal" data-target="#youtubeShareModal">Share a movie</a>

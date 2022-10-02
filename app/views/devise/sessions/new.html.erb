@@ -4,7 +4,6 @@
       <div class="card-body p-4 p-sm-5">
         <h5 class="card-title text-center mb-5 text-uppercase fw-bold fs-5">Sign In</h5>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <%= render "shared/flash_messages" %>
           <div class="form-floating mb-3">
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "name@example.com" %>
             <%= f.label :email, "Email address" %>

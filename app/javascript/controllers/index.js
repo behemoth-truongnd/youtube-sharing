@@ -4,5 +4,8 @@
 
 import { application } from "./application";
 
+import CommonController from "./common_controller";
+application.register("common", CommonController);
+
 import HomesController from "./homes_controller";
 application.register("homes", HomesController);
