@@ -1,6 +1,6 @@
 <li class="movie-item">
-  <div class="movie">
-    <iframe src="https://www.youtube.com/embed/<%= video.youtube_id %>" class="video" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="movie-thumbnail">
+    <%= image_tag video.thumbnail_url, loading: "lazy", alt: "…", width: "200", height: "200" %>
   </div>
   <div class="movie-detail">
     <div class="movie-title">
