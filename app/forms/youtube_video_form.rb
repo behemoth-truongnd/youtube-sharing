@@ -32,8 +32,12 @@ class YoutubeVideoForm < BaseForm
 
     youtube_id = YT_LINK_FORMAT.match(youtube_url)[2]
     self.video = Yt::Video.new(id: youtube_id)
-    self.video.title
-  rescue
+    raise StandardError.new("Title is blank!") if self.video.title.blank?
+
+    if YoutubeVideo.where.not(id: model.id).exists?(youtube_id: youtube_id)
+      errors.add(:youtube_url, :taken)
+    end
+  rescue => _e
     errors.add(:youtube_url, :invalid)
   end
 end
