@@ -69,5 +69,6 @@ group :development do
   # gem "spring"
 end
 
+gem "active_type"
 gem "devise"
 gem "yt"

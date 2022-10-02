@@ -1,0 +1,26 @@
+<li class="movie-item">
+  <div class="movie">
+    <iframe src="https://www.youtube.com/embed/<%= video.youtube_id %>" class="video" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <div class="movie-detail">
+    <div class="movie-title">
+      <%= video.title %>
+    </div>
+    <div class="movie-author">
+      <div class="movie-author-avatar"></div>
+      <div class="movie-author-name">
+        Shared by: <span><%= video.user.email %></span>
+      </div>
+    </div>
+    <div class="movie-subtitle">
+      <div class="movie-likes">
+        <span class="icon like"><%= video.like_count %></span>
+        <span class="icon dislike"><%= video.dislike_count %></span>
+      </div>
+    </div>
+    <div class="movie-description">
+      <div class="movie-description-title">Description:</div>
+      <div class="movie-description-content"><%= video.description %></div>
+    </div>
+  </div>
+</li>
