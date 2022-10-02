@@ -1,6 +1,9 @@
 <div data-controller="homes">
   <ul class="movie-list">
     <%= render partial: 'video', collection: @videos, locals: { reacts: @reacts } %>
+    <% if @pagy.pages > 1 %>
+      <%== pagy_bootstrap_nav(@pagy) %>
+    <% end %>
   </ul>
 
   <% if current_user.present? %>
