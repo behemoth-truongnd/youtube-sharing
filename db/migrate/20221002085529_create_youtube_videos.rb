@@ -5,7 +5,7 @@ class CreateYoutubeVideos < ActiveRecord::Migration[7.0]
       t.string :youtube_id
       t.string :title
       t.text :description
-      t.text :thumbnails
+      t.text :thumbnail_url
       t.integer :duration
       t.datetime :published_at
       t.integer :like_count, default: 0

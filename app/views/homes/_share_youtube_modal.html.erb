@@ -1,6 +1,7 @@
 <div class="modal fade" id="youtubeShareModal" tabindex="-1" role="dialog" aria-labelledby="youtubeShareModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      <%= form_for [@form], url: youtube_videos_path(@form), method: :post do |f| %>
       <div class="modal-header">
         <h5 class="modal-title" id="youtubeShareModalLabel">Share a youtube movie</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -8,16 +9,15 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Youtube URL:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-        </form>
+        <div>
+          <%= f.label :youtube_url, "Youtube URL:", class: "col-form-label" %>
+          <%= f.text_field :youtube_url, class: "form-control" %>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Share</button>
+        <%= f.submit "Share movie", class: 'btn btn-primary', data: { action: "homes#shareMovie" } %>
       </div>
+      <% end %>
     </div>
   </div>
 </div>

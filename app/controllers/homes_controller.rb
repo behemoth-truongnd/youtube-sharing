@@ -1,5 +1,6 @@
 class HomesController < ApplicationController
   def index
-    @pagy, @records = pagy(YoutubeVideo.all)
+    @form = ::YoutubeVideoForm.new.assign_model(YoutubeVideo.new)
+    @pagy, @videos = pagy(YoutubeVideo.all)
   end
 end

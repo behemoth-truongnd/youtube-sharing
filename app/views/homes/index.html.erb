@@ -1,3 +1,9 @@
-<ul class="movie-list">
-  <%= render partial: 'video', collection: @videos %>
-</ul>
+<div data-controller="homes">
+  <ul class="movie-list">
+    <%= render partial: 'video', collection: @videos %>
+  </ul>
+
+  <% if current_user.present? %>
+    <%= render "share_youtube_modal" %>
+  <% end %>
+</div>

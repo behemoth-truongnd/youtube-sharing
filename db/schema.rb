@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_02_085529) do
     t.string "youtube_id"
     t.string "title"
     t.text "description"
-    t.text "thumbnails"
+    t.text "thumbnail_url"
     t.integer "duration"
     t.datetime "published_at"
     t.integer "like_count", default: 0
