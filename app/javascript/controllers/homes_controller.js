@@ -20,8 +20,7 @@ export default class extends Controller {
       contentType: false,
       processData: false,
       success: function (response) {
-        console.log(response);
-        // $("#youtubeShareModal").modal("hide");
+        $("#youtubeShareModal").modal("hide");
       },
     });
   }
