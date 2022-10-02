@@ -13,20 +13,16 @@ class User < ApplicationRecord
     react = react_histories.find_or_initialize_by(youtube_video_id: video_id)
     old_react_type = react.react_type
     ActiveRecord::Base.transaction do
-      updated = if react.none_react?
-                  react.public_send("#{react_type}!")
-                  YoutubeVideo.where(id: video_id).update_all("#{react_type}_count = #{react_type}_count + 1")
-                elsif old_react_type == react_type
-                  react.none_react!
-                  YoutubeVideo.where(id: video_id).update_all("#{react_type}_count = #{react_type}_count - 1")
-                else
-                  react.public_send("#{react_type}!")
-                  YoutubeVideo.where(id: video_id).update_all(
-                    "#{react_type}_count = #{react_type}_count + 1, #{old_react_type}_count = #{old_react_type}_count - 1",
-                  )
-                end
-
-      raise "Cann't react video. Please try again!" if updated != 1
+      if react.none_react?
+        react.public_send("#{react_type}!")
+        YoutubeVideo.increment_counter("#{react_type}_count".to_sym, video_id)
+      elsif old_react_type == react_type
+        react.none_react!
+        YoutubeVideo.decrement_counter("#{react_type}_count".to_sym, video_id)
+      else
+        react.public_send("#{react_type}!")
+        YoutubeVideo.update_counters(video_id, :"#{react_type}_count" => 1, :"#{old_react_type}_count" => -1)
+      end
     end
 
     react
