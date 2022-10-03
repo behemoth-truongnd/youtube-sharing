@@ -7,8 +7,8 @@ export default class extends Controller {
     event.preventDefault();
     const $form = $("#new_youtube_video_form");
     var formData = new FormData($form[0]);
-    $(".text-danger").remove();
-    $("#youtube-url").removeClass("input-error");
+    $(".invalid-feedback").remove();
+    $("#youtube-url").removeClass("is-invalid");
     $.ajax({
       url: $form.attr("action"),
       type: "POST",
@@ -26,9 +26,9 @@ export default class extends Controller {
           $("#youtubeShareModal").modal("hide");
           window.location.href = "/";
         } else {
-          $("#youtube-url").addClass("input-error");
+          $("#youtube-url").addClass("is-invalid");
           response.messages.youtube_url.forEach((message) => {
-            var error = `<span class='text-danger'>${message}<span>`;
+            var error = `<div class='invalid-feedback'>${message}<div>`;
             $(".url-wrapper").append(error);
           });
         }
